@@ -1,0 +1,104 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>BigBrain</groupId>
+  <artifactId>BigBrain</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <dependencies>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.2.14</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>2.2.14</version>
+		</dependency>
+				<!-- https://mvnrepository.com/artifact/org.richfaces/richfaces -->
+		<dependency>
+		    <groupId>org.richfaces</groupId>
+		    <artifactId>richfaces</artifactId>
+		    <version>4.5.17.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>el-impl</artifactId>
+			<version>2.2</version>
+		</dependency>
+
+		<dependency>
+	    <groupId>org.hibernate.ogm</groupId>
+	    <artifactId>hibernate-ogm-mongodb</artifactId>
+	</dependency>
+	    <dependency>
+		    <groupId>org.hibernate.javax.persistence</groupId>
+		    <artifactId>hibernate-jpa-2.1-api</artifactId>
+		</dependency>
+		<dependency>
+	        <groupId>org.jboss.spec.javax.transaction</groupId>
+	        <artifactId>jboss-transaction-api_1.2_spec</artifactId>
+	    </dependency>
+	
+	    <!-- Add the Narayana Transactions Manager
+	         an implementation would be provided in a Java EE container,
+	         but this works nicely in Java SE as well -->
+	    <dependency>
+	        <groupId>org.jboss.narayana.jta</groupId>
+	        <artifactId>narayana-jta</artifactId>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.jboss</groupId>
+	        <artifactId>jboss-transaction-spi</artifactId>
+		    <version>7.1.0.Final</version>
+	    </dependency>
+	    <!-- https://mvnrepository.com/artifact/org.jasypt/jasypt -->
+		<dependency>
+		    <groupId>org.jasypt</groupId>
+		    <artifactId>jasypt</artifactId>
+		    <version>1.9.2</version>
+		</dependency>    
+  </dependencies>
+  
+	  <dependencyManagement>
+	    <dependencies>
+	        <dependency>
+	            <groupId>org.hibernate.ogm</groupId>
+	            <artifactId>hibernate-ogm-bom</artifactId>
+	            <version>5.1.0.Final</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency>
+	    </dependencies>
+	</dependencyManagement>
+  
+   <build>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.6.0</version>
+          <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+          </configuration>
+        </plugin>  
+      </plugins>    
+  </build>
+  
+</project>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+  <h:head>
+    <title>Login</title>
+  </h:head>
+  <h:body>
+    <f:view>
+      <h:form>
+          <h:panelGrid columns="2">
+            Username: <h:inputText value="#{userBean.user.username}" 
+            required="true"/>
+            Password: <h:inputSecret value="#{userBean.user.password}" 
+            required="true"/>
+          </h:panelGrid>
+        <h:messages/>
+        <h:commandButton value="Login" action="#{userBean.login}"/>
+        <h:commandLink value="Register" action="#{userBean.goRegister}" immediate="true"/>
+      </h:form>
+    </f:view>
+  </h:body>
+
+</html>

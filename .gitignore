@@ -1,0 +1,11 @@
+target/
+.classpath
+.project
+.settings/
+.metadata/
+*.iml
+.idea
+.DS_Store
+logs/
+*.idea/*
+.gitignore~
