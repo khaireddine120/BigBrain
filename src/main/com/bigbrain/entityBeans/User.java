@@ -1,17 +1,42 @@
 package com.bigbrain.entityBeans;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Transient;
+
+import com.bigbrain.enums.RoleEnum;
+import com.bigbrain.enums.UserLevelEnum;
 
 @Entity
 public class User {
-	@Id
-	private String username;
+	
+	@Id @Column(name = "eml")
+	private String email;
     @Column(name = "pwd")
     private String password;
+    @Column(name = "fnm")
+    private String firstname;
+    @Column(name = "lnm")
+    private String lastname;
+    @Column(name = "rle")
+    private RoleEnum role;
+    @Column(name = "ule")
+    private UserLevelEnum userLevel;
+    @Column(name = "dtc")
+    private Date date;
+    @Column(name = "atv")
+    private Boolean active;
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
     public String getPassword() {
         return password;
     }
@@ -20,28 +45,54 @@ public class User {
     	this.password = password;
     }
 
-	@Transient
-	private String repassword;
-	
-	public User() {
-		username = "";
-		password = "";
-		repassword = "";
-	}
-	
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public String getRepassword() {
-		return repassword;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public void setRepassword(String repassword) {
-		this.repassword = repassword;
+	public String getLastname() {
+		return lastname;
 	}
-		
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public RoleEnum getRole() {
+		return role;
+	}
+
+	public void setRole(RoleEnum role) {
+		this.role = role;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public UserLevelEnum getUserLevel() {
+		return userLevel;
+	}
+
+	public void setUserLevel(UserLevelEnum userLevel) {
+		this.userLevel = userLevel;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+	
+	
+
 }

@@ -11,8 +11,8 @@ public class UserService {
 		userDao = new UserDao();
 	}
 	
-	public boolean validateUser(User user) {
-		return userDao.getUser(user);
+	public User validateUser(String email, String password) {
+		return userDao.getUser(email, password);
 	}
 	
 	public void saveUser(User user) {

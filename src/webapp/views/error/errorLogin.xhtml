@@ -2,8 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
   <h:head>
     <title>Error login</title>
@@ -15,8 +17,8 @@
           		<h:outputText style="color:red" value="Wrong username or password "/>
           </h:panelGrid>
           <h:panelGrid columns="2">
-          	<h:commandLink value="Login" action="#{userBean.goLogin}" immediate="true"/>
-        	<h:commandLink value="Register" action="#{userBean.goRegister}" immediate="true"/>
+          	<h:commandLink value="Login" action="#{loginBean.goLogin}" immediate="true"/>
+        	<h:commandLink value="Register" action="#{registerBean.goRegister}" immediate="true"/>
           </h:panelGrid>
       </h:form>
     </f:view>

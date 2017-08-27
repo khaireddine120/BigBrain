@@ -2,8 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
   <h:head>
     <title>Register</title>
@@ -11,17 +13,33 @@
   <h:body>
     <f:view>
       <h:form>
-          <h:panelGrid columns="2">
-            Username: <h:inputText value="#{userBean.user.username}" 
-            required="true"/>
-            Password: <h:inputSecret value="#{userBean.user.password}" 
-            required="true"/>
-            Retype Password: <h:inputSecret value="#{userBean.user.repassword}" 
-            required="true"/>
-          </h:panelGrid>
-        <h:messages/>
-        <h:commandButton value="Register" action="#{userBean.register}"/>
-        <h:commandLink value="Already registred" action="#{userBean.goLogin}" immediate="true"/>
+      	    <p:panel id="pnl" header="Registration" style="margin-top:100px;margin-left:-250px;margin-bottom:10px;width:500px;position: absolute;left:50%">
+      	        	<p:message for="email" />
+      	        	<p:message for="firstname" />
+	         		<p:message for="lastname" />
+	         		<p:message for="password" />
+	         		<p:message for="repassword" />
+			        <h:panelGrid columns="2">
+			           <h:outputText value="Email:" /> <p:inputText id="email" required="true" label="email"
+						requiredMessage="Please enter your email address."
+						validatorMessage="Invalid email format"
+						value="#{registerBean.email}">
+					  <f:validateRegex
+						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+						</p:inputText>
+						<h:outputText value="Firstname" /> <p:inputText id="firstname" required="true" requiredMessage="Please enter your firstname."
+						value="#{registerBean.firstname}"/>
+				        <h:outputText value="Lastname" /> <p:inputText id="lastname" required="true" requiredMessage="Please enter your lastname."
+						value="#{registerBean.firstname}"/>	
+			            <h:outputText value="Password:" /> <p:password id="password" requiredMessage="Please enter your password." 
+						value="#{registerBean.password}" match="repassword" required="true" feedback="true" validatorMessage="Passwords doesn't mach"/>
+				        <h:outputText value="Retype Password:" /> <p:password required="true" id="repassword" 
+				        	requiredMessage="Please retype your password."/>
+					</h:panelGrid>	        
+						
+		        <p:commandButton value="Register" action="#{registerBean.register}"  update="pnl"/>
+		        <p:commandLink value="Already registred" action="#{loginBean.goLogin}" immediate="true"/>
+		    </p:panel>
       </h:form>
     </f:view>
   </h:body>

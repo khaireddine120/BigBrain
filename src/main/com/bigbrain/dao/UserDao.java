@@ -21,18 +21,18 @@ public class UserDao {
 		em.getTransaction().commit();
 	}
 	
-	public boolean getUser(User user) {
-		boolean userFound = false;     
+	public User getUser(String email, String password) {
+		User userFromDB = null;
         EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		User userFromDB =  em.find(User.class, user.getUsername());
-		if(userFromDB != null && userFromDB.getUsername().equals(user.getUsername()) && userFromDB.getPassword().equals(CryptoUtils.encrypt(user.getPassword()))) {
-			userFound = true;
+		userFromDB =  em.find(User.class, email);
+		if(userFromDB != null && userFromDB.getEmail().equals(email) && userFromDB.getPassword().equals(CryptoUtils.encrypt(password))) {
+			userFromDB = null;
 		}
 		em.flush();
 		em.close();
 		em.getTransaction().commit();
-		return userFound;
+		return userFromDB;
 	}
 	
 }
