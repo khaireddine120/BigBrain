@@ -1,5 +1,6 @@
 package com.bigbrain.beans;
 
+import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,6 +11,7 @@ import com.bigbrain.entityBeans.User;
 import com.bigbrain.enums.RoleEnum;
 import com.bigbrain.enums.UserLevelEnum;
 import com.bigbrain.services.UserService;
+import com.bigbrain.utils.EmailUtils;
 
 @ManagedBean(name="registerBean")
 @RequestScoped
@@ -98,7 +100,7 @@ public class RegisterBean implements Serializable {
 		return "register";
 	}
 	
-	public String register() {
+	public String register() throws FileNotFoundException {
 		User user = new User();
 		user.setEmail(email);
 		user.setPassword(password);
@@ -109,6 +111,8 @@ public class RegisterBean implements Serializable {
 		user.setUserLevel(UserLevelEnum.JUNIOR);
 		user.setRole(RoleEnum.USER);
 		userService.saveUser(user);
+		EmailUtils emailUtils = new EmailUtils();
+		emailUtils.sendEmail("khaireddine.rezgui@gmail.com", "subject Test", "body text");
 		return "registred";
 	}
 	
