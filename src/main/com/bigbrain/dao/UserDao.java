@@ -26,9 +26,34 @@ public class UserDao {
         EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		userFromDB =  em.find(User.class, email);
-		if(userFromDB != null && userFromDB.getEmail().equals(email) && userFromDB.getPassword().equals(CryptoUtils.encrypt(password))) {
+		if(userFromDB != null && (!userFromDB.getEmail().equals(email) ||  !CryptoUtils.decrypt(userFromDB.getPassword()).equals(password) || !userFromDB.getActive())) {
 			userFromDB = null;
 		}
+		em.flush();
+		em.close();
+		em.getTransaction().commit();
+		return userFromDB;
+	}
+
+	public void activateUser(String email, String codeActivation) {
+		User userFromDB = null;
+        EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		userFromDB =  em.find(User.class, email);
+		if(userFromDB != null && userFromDB.getEmail().equals(email) && !userFromDB.getActive() && userFromDB.getCodeActivation().equals(codeActivation)) {
+			userFromDB.setActive(true);
+			em.merge(userFromDB);
+		}
+		em.flush();
+		em.close();
+		em.getTransaction().commit();
+	}
+
+	public User checkExisantUser(String email) {
+		User userFromDB = null;
+        EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		userFromDB =  em.find(User.class, email);
 		em.flush();
 		em.close();
 		em.getTransaction().commit();

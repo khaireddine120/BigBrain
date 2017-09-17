@@ -1,15 +1,21 @@
 package com.bigbrain.properties;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Properties;
 
+import org.hibernate.loader.GeneratedCollectionAliases;
+
 public class PropertyReader {
-    
+	static final ClassLoader loader = PropertyReader.class.getClassLoader();
+
     public static Properties readProperties(String fileInClasspath) throws FileNotFoundException {
-        InputStream is = new FileInputStream(fileInClasspath);
-        
+        File file = new File(loader.getResource(fileInClasspath).getFile());
+        InputStream is = new FileInputStream(file);
+
         try {
             Properties properties = new Properties();
             properties.load(is);

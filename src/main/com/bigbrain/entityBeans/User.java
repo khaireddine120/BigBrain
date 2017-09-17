@@ -1,5 +1,6 @@
 package com.bigbrain.entityBeans;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,8 +11,12 @@ import com.bigbrain.enums.RoleEnum;
 import com.bigbrain.enums.UserLevelEnum;
 
 @Entity
-public class User {
+public class User implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id @Column(name = "eml")
 	private String email;
     @Column(name = "pwd")
@@ -28,6 +33,8 @@ public class User {
     private Date date;
     @Column(name = "atv")
     private Boolean active;
+    @Column(name = "cAct")
+    private String codeActivation;
 
 	public String getEmail() {
 		return email;
@@ -92,7 +99,13 @@ public class User {
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
-	
-	
+
+	public String getCodeActivation() {
+		return codeActivation;
+	}
+
+	public void setCodeActivation(String codeActivation) {
+		this.codeActivation = codeActivation;
+	}
 
 }

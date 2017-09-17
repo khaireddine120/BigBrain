@@ -16,4 +16,9 @@ public class CryptoUtils {
         return textEncryptor.decrypt(encryptedText);
 	}
 	
+   public static void main(String[] args) {
+	   System.out.println(decrypt(encrypt("test")));
+	   System.out.println(encrypt("test"));
+   }
+	
 }

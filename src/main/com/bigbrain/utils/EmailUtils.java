@@ -13,10 +13,11 @@ import com.bigbrain.properties.PropertyReader;
 
 public class EmailUtils {
     
-	private final static String SMTP_FILE_PATH = "src/resources/smtp.properties"; 
+	private final static String SMTP_FILE_PATH = "smtp.properties"; 
 	private Properties properties;
 
 	public EmailUtils() throws FileNotFoundException {
+		
 		this.properties = PropertyReader.readProperties(SMTP_FILE_PATH);
 	}
 	
@@ -33,12 +34,12 @@ public class EmailUtils {
 
 			try {
 
-				Message message = new MimeMessage(session);
+				MimeMessage message = new MimeMessage(session);
 				message.setFrom(new InternetAddress(properties.getProperty("smtp.from")));
 				message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(destinator));
 				message.setSubject(subject);
-				message.setText(body);
+				message.setContent(body, "text/html; charset=utf-8");
 
 				Transport.send(message);
 

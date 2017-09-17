@@ -14,6 +14,7 @@
     <f:view>
       <h:form>
       	    <p:panel id="pnl" header="Registration" style="margin-top:100px;margin-left:-250px;margin-bottom:10px;width:500px;position: absolute;left:50%">
+      	        	<h:outputText value="#{registerBean.errorMessage}" style="color:'red'"/>
       	        	<p:message for="email" />
       	        	<p:message for="firstname" />
 	         		<p:message for="lastname" />
@@ -30,7 +31,7 @@
 						<h:outputText value="Firstname" /> <p:inputText id="firstname" required="true" requiredMessage="Please enter your firstname."
 						value="#{registerBean.firstname}"/>
 				        <h:outputText value="Lastname" /> <p:inputText id="lastname" required="true" requiredMessage="Please enter your lastname."
-						value="#{registerBean.firstname}"/>	
+						value="#{registerBean.lastname}"/>	
 			            <h:outputText value="Password:" /> <p:password id="password" requiredMessage="Please enter your password." 
 						value="#{registerBean.password}" match="repassword" required="true" feedback="true" validatorMessage="Passwords doesn't mach"/>
 				        <h:outputText value="Retype Password:" /> <p:password required="true" id="repassword" 

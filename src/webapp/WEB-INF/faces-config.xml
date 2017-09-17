@@ -76,4 +76,12 @@
   		<redirect />
   	</navigation-case>
   </navigation-rule>
+  <navigation-rule>
+  	<display-name>views/auth/register.xhtml</display-name>
+  	<from-view-id>/views/auth/register.xhtml</from-view-id>
+  	<navigation-case>
+  		<from-outcome>register</from-outcome>
+  		<to-view-id>/views/auth/register.xhtml</to-view-id>
+  	</navigation-case>
+  </navigation-rule>
 </faces-config>
